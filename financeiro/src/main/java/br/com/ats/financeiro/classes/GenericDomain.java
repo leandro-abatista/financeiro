@@ -9,13 +9,13 @@ import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 
 @MappedSuperclass // notação para falar que não é uma tabela, porém que vai ser usada por outras// tabela//herança
-public class GenericDomain implements Serializable {
+public abstract class GenericDomain implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	protected Long id;
 
 	public Long getId() {
 		return id;

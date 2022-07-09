@@ -1,13 +1,16 @@
 package br.com.ats.financeiro.classes;
 
-public abstract class Pessoa extends GenericDomain {
+import javax.persistence.MappedSuperclass;
+
+@MappedSuperclass // notação para falar que não é uma tabela, porém que vai ser usada por outras// tabela//herança
+public class Pessoa extends GenericDomain {
 
 	private static final long serialVersionUID = 1L;
 	
-	private String nome;
-	private String sobrenome;
-	private String cpf;
-	private String email;
+	protected String nome;
+	protected String sobrenome;
+	protected String cpf;
+	protected String email;
 	
 
 	public String getNome() {
