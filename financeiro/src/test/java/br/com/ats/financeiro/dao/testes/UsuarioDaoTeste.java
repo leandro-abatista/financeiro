@@ -90,4 +90,31 @@ public class UsuarioDaoTeste {
 		}
 	}
 	
+	@Test
+	@Ignore
+	public void editar() throws Excecoes {
+		
+		Long codigo = 3L;
+		UsuarioDao usuarioDao = new UsuarioDao();
+		Usuario usuario = usuarioDao.buscarPorId(codigo);
+		
+		if (usuario == null) {
+			System.out.println("Nenhum registro encontrado com o ID informado!");
+		} else {
+			System.out.println("Registro a ser atualizado : " + usuario.getId());
+			System.out.println("ID : " + usuario.getId()
+			+ " Nome : " + usuario.getNome()
+			+ " CPF : " + usuario.getCpf());
+			
+			usuario.setCpf("852.852.456-45");
+			usuario.setEmail("alessandrateste@gmail.com");
+			usuarioDao.editar(usuario);
+			
+			System.out.println("Registro Atualizado com sucesso!");
+			System.out.println("ID : " + usuario.getId()
+			+ " Nome : " + usuario.getNome()
+			+ " CPF : " + usuario.getCpf());
+		}
+	}
+	
 }
