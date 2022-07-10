@@ -35,20 +35,20 @@ public class UsuarioDaoTeste {
 	public void merge() throws Excecoes {
 		
 		Usuario usuario = new Usuario();
-		usuario.setNome("marcos");
-		usuario.setSobrenome("outubro franco");
-		usuario.setCpf("13245679812");
-		usuario.setEmail("marcos@teste.com");
-		usuario.setLogin("marcos");
-		usuario.setSenha("4d5s5s");
+		usuario.setNome("marilia");
+		usuario.setSobrenome("janeiro brasil");
+		usuario.setCpf("22222222222");
+		usuario.setEmail("marilia@gmail.com");
+		usuario.setLogin("mari");
+		usuario.setSenha("sa45a5s");
 		
 		Usuario usuario2 = new Usuario();
-		usuario2.setNome("leticia");
-		usuario2.setSobrenome("fidelis nobre");
-		usuario2.setCpf("55544411111");
-		usuario2.setEmail("leticia@teste.com");
-		usuario2.setLogin("leticia");
-		usuario2.setSenha("asa121");
+		usuario2.setNome("eduardo");
+		usuario2.setSobrenome("bones ceza");
+		usuario2.setCpf("33355566655");
+		usuario2.setEmail("eduardo@hotmail.com");
+		usuario2.setLogin("eduardo");
+		usuario2.setSenha("555ssd");
 		
 		UsuarioDao usuarioDao = new UsuarioDao();
 		usuarioDao.merge(usuario);
@@ -70,4 +70,24 @@ public class UsuarioDaoTeste {
 								+ " CPF : " + usuario.getCpf());
 		}
 	}
+	
+	@Test
+	@Ignore
+	public void excluir() throws Excecoes {
+		
+		Long codigo = 7L;
+		UsuarioDao usuarioDao = new UsuarioDao();
+		Usuario usuario = usuarioDao.buscarPorId(codigo);
+		
+		if (usuario == null) {
+			System.out.println("Usuário não encontrado com o ID informado!");
+		} else {
+			usuarioDao.excluir(usuario);
+			System.out.println("Registro removido : " + usuario.getId());
+			System.out.println("ID : " + usuario.getId()
+			+ " Nome : " + usuario.getNome()
+			+ " CPF : " + usuario.getCpf());
+		}
+	}
+	
 }

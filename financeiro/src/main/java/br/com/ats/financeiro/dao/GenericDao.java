@@ -8,6 +8,7 @@ import javax.transaction.SystemException;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Restrictions;
 
 import br.com.ats.financeiro.exceptions.Excecoes;
 import br.com.ats.financeiro.util.HibernateUtil;
@@ -85,6 +86,43 @@ public class GenericDao<ObjetoEntidade> {
 		} finally {
 			sessao.close();
 		}
+	}
+	
+	@SuppressWarnings("unchecked")
+	public ObjetoEntidade buscarPorId(Long id) throws Excecoes {
 		
+		sessao = HibernateUtil.getFabricaDeSessoes().openSession();
+		
+		try {
+
+			Criteria consulta = sessao.createCriteria(classeObjeto);
+			ObjetoEntidade objetoEntidade = (ObjetoEntidade) consulta.add(Restrictions.idEq(id)).uniqueResult();;
+			return objetoEntidade;
+
+		} catch (RuntimeException erro) {
+			throw new Excecoes(erro.getMessage());
+		} finally {
+			sessao.close();
+		}
+	}
+	
+	public void excluir(ObjetoEntidade objetoEntidade) throws Excecoes {
+		
+		sessao = HibernateUtil.getFabricaDeSessoes().openSession();
+
+		try {
+			
+			transacao = sessao.beginTransaction();
+			sessao.delete(objetoEntidade);
+			transacao.commit();
+			
+		} catch (RuntimeException erro) {
+			if (transacao != null) {
+				transacao.rollback();
+			}
+			throw new Excecoes(erro.getMessage());
+		} finally {
+			sessao.close();
+		}
 	}
 }
