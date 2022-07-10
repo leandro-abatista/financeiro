@@ -117,4 +117,23 @@ public class UsuarioDaoTeste {
 		}
 	}
 	
+	@Test
+	@Ignore
+	public void buscarPorId() throws Excecoes {
+		
+		Long codigo = 5L;
+		UsuarioDao usuarioDao = new UsuarioDao();
+		Usuario usuario = usuarioDao.buscarPorId(codigo);
+		
+		if (usuario == null) {
+			System.out.println("Nenhum registro encontrado com o ID : " +codigo+ " informado!");
+		} else {
+			System.out.println("Registro encontrado :");
+			System.out.println("ID : " + usuario.getId()
+			+ " Nome : " + usuario.getNome() + " " + usuario.getSobrenome()
+			+ " - CPF : " + usuario.getCpf()
+			+ " - E-mail : " + usuario.getEmail());
+		}
+	}
+	
 }
