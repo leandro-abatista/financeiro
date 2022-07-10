@@ -1,9 +1,11 @@
 package br.com.ats.financeiro.dao;
 
 import java.lang.reflect.ParameterizedType;
+import java.util.List;
 
 import javax.transaction.SystemException;
 
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -65,5 +67,24 @@ public class GenericDao<ObjetoEntidade> {
 		} finally {
 			sessao.close();
 		}
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<ObjetoEntidade> listar() throws Excecoes{
+		
+		sessao = HibernateUtil.getFabricaDeSessoes().openSession();
+		
+		try {
+			
+			Criteria consulta = sessao.createCriteria(classeObjeto);
+			List<ObjetoEntidade> resultado = consulta.list();
+			return resultado;
+			
+		} catch (RuntimeException erro) {
+			throw new Excecoes(erro.getMessage());
+		} finally {
+			sessao.close();
+		}
+		
 	}
 }

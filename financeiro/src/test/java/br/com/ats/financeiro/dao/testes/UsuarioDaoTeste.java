@@ -1,5 +1,7 @@
 package br.com.ats.financeiro.dao.testes;
 
+import java.util.List;
+
 import javax.transaction.SystemException;
 
 import org.junit.Ignore;
@@ -52,5 +54,20 @@ public class UsuarioDaoTeste {
 		usuarioDao.merge(usuario);
 		usuarioDao.merge(usuario2);
 		System.out.println("Usuário salvo com sucesso!");
+	}
+	
+	@Test
+	@Ignore
+	public void lista() throws Excecoes{
+		
+		UsuarioDao usuarioDao = new UsuarioDao();
+		List<Usuario> usuarios = usuarioDao.listar();
+		System.out.println("Total de registros encontrados :: " + usuarios.size());
+		
+		for (Usuario usuario : usuarios) {
+			System.out.println("ID : " + usuario.getId()
+								+ " Nome : " + usuario.getNome()
+								+ " CPF : " + usuario.getCpf());
+		}
 	}
 }
