@@ -1,5 +1,6 @@
 package br.com.ats.financeiro.classes;
 
+import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
 
 @MappedSuperclass // notação para falar que não é uma tabela, porém que vai ser usada por outras// tabela//herança
@@ -7,9 +8,13 @@ public class Pessoa extends GenericDomain {
 
 	private static final long serialVersionUID = 1L;
 	
+	@Column(nullable = false, length = 50)
 	protected String nome;
+	@Column(nullable = false, length = 100)
 	protected String sobrenome;
+	@Column(nullable = false, length = 14, unique = true)
 	protected String cpf;
+	@Column(nullable = false, length = 200)
 	protected String email;
 	
 

@@ -28,7 +28,7 @@
 		<property name="format_sql">true</property> <!-- Show SQL formatted -->
 
 		<!-- Cria as tabelas do banco de dados -->
-		<property name="hbm2ddl.auto">create</property>
+		<property name="hbm2ddl.auto">update</property>
 		
 		<property name="hibernate.temp.use_jdbc_metadata_defaults">false</property>
 		

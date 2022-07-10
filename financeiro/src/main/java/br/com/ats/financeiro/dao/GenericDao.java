@@ -45,4 +45,25 @@ public class GenericDao<ObjetoEntidade> {
 			sessao.close();
 		}
 	}
+	
+	@SuppressWarnings("unchecked")
+	public ObjetoEntidade merge(ObjetoEntidade objetoEntidade) throws Excecoes {
+
+		sessao = HibernateUtil.getFabricaDeSessoes().openSession();
+
+		try {
+
+			transacao = sessao.beginTransaction();
+			ObjetoEntidade retorno = (ObjetoEntidade) sessao.merge(objetoEntidade);
+			transacao.commit();
+			return retorno;
+		} catch (RuntimeException erro) {
+			if (transacao != null) {
+				transacao.rollback();
+			}
+			throw new Excecoes(erro.getMessage());
+		} finally {
+			sessao.close();
+		}
+	}
 }
