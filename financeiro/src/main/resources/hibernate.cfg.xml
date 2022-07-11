@@ -36,6 +36,7 @@
 		<!-- Mapeamento das tabelas  -->
 		<mapping class="br.com.ats.financeiro.classes.Usuario" />
 		<mapping class="br.com.ats.financeiro.classes.Cliente" />
+		<mapping class="br.com.ats.financeiro.classes.Fornecedor" />
     
     </session-factory>
 </hibernate-configuration>
