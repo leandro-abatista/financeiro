@@ -32,4 +32,23 @@ public class FornecedorDaoTeste {
 		dao.salvar(fornecedor);
 		System.out.println("Fornecedor salvo com sucesso!");
 	}
+	
+	@Test
+	@Ignore
+	public void merge() throws ParseException, IllegalStateException, Excecoes, SystemException {
+		
+		Fornecedor fornecedor = new Fornecedor();
+		fornecedor.setRazaoSocial("patlog distribuidora de alimentos ltda");
+		fornecedor.setNomeFantasia("patlog");
+		fornecedor.setCnpj("033.325.222/0001-99");
+		fornecedor.setEmail("patlog@gmail.com");
+		fornecedor.setInscEstadual("123");
+		fornecedor.setInscMunicipal("1322");
+		SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+		fornecedor.setDataFundacao(sdf.parse("30-02-2005"));
+		
+		FornecedorDao dao = new FornecedorDao();
+		dao.merge(fornecedor);
+		System.out.println("Fornecedor salvo com sucesso!");
+	}
 }
