@@ -54,6 +54,7 @@ public class FornecedorDaoTeste {
 	}
 	
 	@Test
+	@Ignore
 	public void listarFornecedor() throws Excecoes {
 		
 		FornecedorDao dao = new FornecedorDao();
@@ -74,5 +75,31 @@ public class FornecedorDaoTeste {
 							  +"\nData Fundação  : " + dataEHora.format(fornecedor.getDataFundacao()));
 			System.out.println("-----------------------------------------------------------------");
 		}  
+	}
+	
+	@Test
+	@Ignore
+	public void buscarPorId() throws Excecoes {
+
+		Long codigo = 1L;
+		FornecedorDao dao = new FornecedorDao();
+		Fornecedor fornecedor = dao.buscarPorId(codigo);
+
+		SimpleDateFormat data = new SimpleDateFormat("dd-MM-yyyy");
+		SimpleDateFormat dataEHora = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+		if (fornecedor == null) {
+			System.out.println("Nenhum fornecedor encontrado com código " + codigo + "!");
+		} else {
+			System.out.println(
+					"\nRazão Social : " + fornecedor.getRazaoSocial() 
+					+ "\nNome Fantasia : " + fornecedor.getNomeFantasia() 
+					+ "\nCNPJ : " + fornecedor.getCnpj() 
+					+ "\nEmail : " + fornecedor.getEmail() 
+					+ "\nInsc. Estadual : " + fornecedor.getInscEstadual()
+					+ "\nInsc. Municipal : " + fornecedor.getInscMunicipal() 
+					+ "\nData Cadastro : " + dataEHora.format(fornecedor.getDataCadastrado()) 
+					+ "\nData Fundação  : " + data.format(fornecedor.getDataFundacao()));
+			System.out.println("-----------------------------------------------------------------");
+		}
 	}
 }
