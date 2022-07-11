@@ -2,8 +2,11 @@ package br.com.ats.financeiro.classes;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "tb_fornecedor")
@@ -11,15 +14,24 @@ public class Fornecedor extends GenericDomain {
 
 	private static final long serialVersionUID = 1L;
 	
+	@Column(nullable = false, length = 150)
 	private String razaoSocial;
+	@Column(nullable = false, length = 150)
 	private String nomeFantasia;
+	@Column(nullable = false, length = 20)
 	private String cnpj;
+	@Column(nullable = false, length = 10)
 	private String inscEstadual;
+	@Column(nullable = false, length = 10)
 	private String inscMunicipal;
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date dataCadastrado = new Date();
+	@Temporal(TemporalType.DATE)
 	private Date dataFundacao;
+	@Column(nullable = false, length = 150)
 	private String email;
-	private String status;/* Se estar ativa ou inativa */
+//	@Column(nullable = false, length = )
+//	private String status;/* Se estar ativa ou inativa */
 
 	public String getRazaoSocial() {
 		return razaoSocial;
@@ -85,12 +97,5 @@ public class Fornecedor extends GenericDomain {
 		this.email = email;
 	}
 
-	public String getStatus() {
-		return status;
-	}
-
-	public void setStatus(String status) {
-		this.status = status;
-	}
 
 }
