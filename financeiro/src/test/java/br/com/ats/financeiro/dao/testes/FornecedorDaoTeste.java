@@ -2,6 +2,7 @@ package br.com.ats.financeiro.dao.testes;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.List;
 
 import javax.transaction.SystemException;
 
@@ -50,5 +51,28 @@ public class FornecedorDaoTeste {
 		FornecedorDao dao = new FornecedorDao();
 		dao.merge(fornecedor);
 		System.out.println("Fornecedor salvo com sucesso!");
+	}
+	
+	@Test
+	public void listarFornecedor() throws Excecoes {
+		
+		FornecedorDao dao = new FornecedorDao();
+		List<Fornecedor> fornecedores = dao.listar();
+		
+		SimpleDateFormat data = new SimpleDateFormat("dd-MM-yyyy");
+		SimpleDateFormat dataEHora = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+		System.out.println("Total de registros encontrados : " + fornecedores.size());
+		
+		for (Fornecedor fornecedor : fornecedores) {
+			System.out.println("\nRazão Social : " + fornecedor.getRazaoSocial()
+							  +"\nNome Fantasia : " + fornecedor.getNomeFantasia()
+							  +"\nCNPJ : " +fornecedor.getCnpj()
+							  +"\nEmail : " + fornecedor.getEmail()
+							  +"\nInsc. Estadual : " + fornecedor.getInscEstadual()
+							  +"\nInsc. Municipal : " + fornecedor.getInscMunicipal()
+							  +"\nData Cadastro : " + data.format(fornecedor.getDataCadastrado())
+							  +"\nData Fundação  : " + dataEHora.format(fornecedor.getDataFundacao()));
+			System.out.println("-----------------------------------------------------------------");
+		}  
 	}
 }
