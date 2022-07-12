@@ -1,9 +1,14 @@
 package br.com.ats.financeiro.classes;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -13,7 +18,7 @@ import javax.persistence.TemporalType;
 public class Fornecedor extends GenericDomain {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	@Column(nullable = false, length = 150)
 	private String razaoSocial;
 	@Column(nullable = false, length = 150)
@@ -32,6 +37,9 @@ public class Fornecedor extends GenericDomain {
 	private String email;
 //	@Column(nullable = false, length = )
 //	private String status;/* Se estar ativa ou inativa */
+
+	@OneToMany(mappedBy = "fornecedor", orphanRemoval = false)
+	private List<Telefone> telefones = new ArrayList<>();
 
 	public String getRazaoSocial() {
 		return razaoSocial;
@@ -80,11 +88,11 @@ public class Fornecedor extends GenericDomain {
 	public void setDataCadastrado(Date dataCadastrado) {
 		this.dataCadastrado = dataCadastrado;
 	}
-	
+
 	public Date getDataFundacao() {
 		return dataFundacao;
 	}
-	
+
 	public void setDataFundacao(Date dataFundacao) {
 		this.dataFundacao = dataFundacao;
 	}
@@ -97,5 +105,8 @@ public class Fornecedor extends GenericDomain {
 		this.email = email;
 	}
 
+	public List<Telefone> getTelefones() {
+		return telefones;
+	}
 
 }

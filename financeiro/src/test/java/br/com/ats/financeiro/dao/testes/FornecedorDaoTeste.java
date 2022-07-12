@@ -20,14 +20,14 @@ public class FornecedorDaoTeste {
 	public void salvar() throws ParseException, IllegalStateException, Excecoes, SystemException {
 		
 		Fornecedor fornecedor = new Fornecedor();
-		fornecedor.setRazaoSocial("ArfaxTechSoft ltda");
-		fornecedor.setNomeFantasia("ArfaxTechSoft");
-		fornecedor.setCnpj("012.111.111/0001-12");
-		fornecedor.setEmail("ats@gmail.com");
-		fornecedor.setInscEstadual("132456");
-		fornecedor.setInscMunicipal("123456");
+		fornecedor.setRazaoSocial("Explore ArfaxTech desenvolvimento de sistemas ltda");
+		fornecedor.setNomeFantasia("Explore ArfaxTech");
+		fornecedor.setCnpj("014.014.123/0001-25");
+		fornecedor.setEmail("explore_arfax@gmail.com");
+		fornecedor.setInscEstadual("333333");
+		fornecedor.setInscMunicipal("333333");
 		SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-		fornecedor.setDataFundacao(sdf.parse("25-05-2000"));
+		fornecedor.setDataFundacao(sdf.parse("30-12-1999"));
 		
 		FornecedorDao dao = new FornecedorDao();
 		dao.salvar(fornecedor);
@@ -38,18 +38,27 @@ public class FornecedorDaoTeste {
 	@Ignore
 	public void merge() throws ParseException, IllegalStateException, Excecoes, SystemException {
 		
+//		Telefone telefone = new Telefone();
+//		telefone.setOperadora("TIM");
+//		telefone.setDescricao("Telefone fixo");
+//		telefone.setNumero("(88) 3421-5555");
+//		TelefoneDao telefoneDao = new TelefoneDao();
+//		telefoneDao.merge(telefone);
+		
 		Fornecedor fornecedor = new Fornecedor();
-		fornecedor.setRazaoSocial("patlog distribuidora de alimentos ltda");
-		fornecedor.setNomeFantasia("patlog");
-		fornecedor.setCnpj("033.325.222/0001-99");
-		fornecedor.setEmail("patlog@gmail.com");
-		fornecedor.setInscEstadual("123");
-		fornecedor.setInscMunicipal("1322");
+		fornecedor.setRazaoSocial("best distribuidora distribuidora de plásticos ltda");
+		fornecedor.setNomeFantasia("best");
+		fornecedor.setCnpj("033.325.101/0001-77");
+		fornecedor.setEmail("bets@gmail.com");
+		fornecedor.setInscEstadual("000111");
+		fornecedor.setInscMunicipal("1112222");
 		SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-		fornecedor.setDataFundacao(sdf.parse("30-02-2005"));
+		fornecedor.setDataFundacao(sdf.parse("05-02-2010"));
 		
 		FornecedorDao dao = new FornecedorDao();
 		dao.merge(fornecedor);
+		
+		
 		System.out.println("Fornecedor salvo com sucesso!");
 	}
 	
