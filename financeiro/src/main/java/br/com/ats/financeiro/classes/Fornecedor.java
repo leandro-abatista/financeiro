@@ -6,8 +6,6 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -37,9 +35,6 @@ public class Fornecedor extends GenericDomain {
 	private String email;
 //	@Column(nullable = false, length = )
 //	private String status;/* Se estar ativa ou inativa */
-
-	@OneToMany(mappedBy = "fornecedor", orphanRemoval = false)
-	private List<Telefone> telefones = new ArrayList<>();
 
 	public String getRazaoSocial() {
 		return razaoSocial;
@@ -103,10 +98,6 @@ public class Fornecedor extends GenericDomain {
 
 	public void setEmail(String email) {
 		this.email = email;
-	}
-
-	public List<Telefone> getTelefones() {
-		return telefones;
 	}
 
 }

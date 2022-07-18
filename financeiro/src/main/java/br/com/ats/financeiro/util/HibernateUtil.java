@@ -36,10 +36,11 @@ public class HibernateUtil {
 		Session sessao = SESSION_FACTORY.openSession();
 		Connection conexao = sessao.doReturningWork(new ReturningWork<Connection>() {
 
-			@Override
 			public Connection execute(Connection connection) throws SQLException {
 				return connection;
 			}
+
+			
 		});
 		return conexao;
 	}

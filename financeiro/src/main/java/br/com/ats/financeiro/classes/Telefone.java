@@ -19,10 +19,6 @@ public class Telefone extends GenericDomain {
 	@Column(nullable = false, length = 15)
 	private String numero;
 	
-	@ManyToOne/*Muitos telefones para um fornecedor*/
-	@JoinColumn(name = "fornecedor", nullable = false)
-	private Fornecedor fornecedor = new Fornecedor();
-
 	public String getOperadora() {
 		return operadora;
 	}
